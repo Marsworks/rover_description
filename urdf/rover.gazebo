@@ -15,27 +15,10 @@
       <torque>20</torque>
       <topicName>cmd_vel</topicName>
       <broadcastTF>true</broadcastTF>
-      <odometryTopic>odom</odometryTopic>
-      <odometryFrame>odom</odometryFrame>
+      <odometryTopic>t265_odom_frame</odometryTopic>
+      <odometryFrame>t265_odom_frame</odometryFrame>
     </plugin>
   </gazebo>
-
-<!-- <gazebo>
-  <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-    <alwaysOn>true</alwaysOn>
-    <updateRate>50</updateRate>
-    <leftJoint>back_left_wheel_joint</leftJoint>
-    <rightJoint>back_right_wheel_joint</rightJoint>
-    <wheelSeparation>0.45</wheelSeparation>
-    <wheelDiameter>0.36</wheelDiameter>
-    <torque>1000</torque>
-    <commandTopic>cmd_vel</commandTopic>
-    <odometryTopic>odom</odometryTopic>
-    <odometryFrame>odom</odometryFrame>
-    <robotBaseFrame>base_link</robotBaseFrame>
-    <legacyMode>true</legacyMode>
-  </plugin>
-</gazebo> -->
 
   <gazebo reference="camera_link">
     <sensor name="depth_camera" type="depth">
@@ -56,12 +39,12 @@
         <baseline>0.2</baseline>
         <alwaysOn>true</alwaysOn>
         <updateRate>1.0</updateRate>
-        <cameraName>camera_ir</cameraName>
+        <cameraName>d400</cameraName>
         <imageTopicName>/camera/depth/image_raw</imageTopicName>
         <cameraInfoTopicName>/camera/depth/camera_info</cameraInfoTopicName>
         <depthImageTopicName>/camera/depth/image_raw</depthImageTopicName>
         <depthImageInfoTopicName>/camera/depth/camera_info</depthImageInfoTopicName>
-        <pointCloudTopicName>/camera/depth/points</pointCloudTopicName>
+        <pointCloudTopicName>/d400/depth/color/points</pointCloudTopicName>
         <frameName>camera_link_optical</frameName>
         <pointCloudCutoff>0.105</pointCloudCutoff>
         <pointCloudCutoffMax>7.0</pointCloudCutoffMax>
@@ -78,21 +61,4 @@
       </plugin>
     </sensor>
   </gazebo>
-
-
-  <!-- <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>/</robotNamespace>
-      <legacyModeNS>true</legacyModeNS>
-    </plugin>
-  </gazebo> -->
-
-  <!-- <gazebo>
-    <plugin name="ground_truth" filename="libgazebo_ros_p3d.so">
-      <frameName>odom</frameName>
-      <bodyName>base_link</bodyName>
-      <topicName>odom</topicName>
-      <updateRate>30.0</updateRate>
-    </plugin>
-  </gazebo> -->
 </robot>
