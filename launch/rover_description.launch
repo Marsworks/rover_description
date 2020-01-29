@@ -27,5 +27,9 @@
     <param name="default_topic" value="/cmd_vel"/>
   </node>
 
-  <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="worlds/moon_surface.world"/> <!-- world should be saved in "usr/share/gazebo-7/worlds" -->
+    <arg name="gui" value="false"/>
+    <arg name="headless" value="false"/> <!-- Inert - see gazebo_ros_pkgs issue #491 -->
+  </include>
 </launch>
