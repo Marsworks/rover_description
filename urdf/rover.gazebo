@@ -12,7 +12,7 @@
       <wheelSeparation>${chassisWidth+wheelWidth}</wheelSeparation>
       <wheelDiameter>${2*wheelRadius}</wheelDiameter>
       <robotBaseFrame>base_link</robotBaseFrame>
-      <torque>20</torque>
+      <torque>130</torque>
       <topicName>cmd_vel</topicName>
       <broadcastTF>true</broadcastTF>
       <odometryTopic>t265_odom_frame</odometryTopic>
