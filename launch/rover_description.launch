@@ -1,4 +1,7 @@
 <launch>
+  <arg name="world_file" default="worlds/cude.world"/>
+  <arg name="gui_state" default="true"/>
+
   <master auto="start"/>
   <!-- IMPORTANT: When no model is appearing run "killall gzserver" http://answers.gazebosim.org/question/9170/error-while-loading-gazebo/ -->
 
@@ -21,8 +24,8 @@
   </node>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="worlds/moon_surface.world"/> <!-- world should be saved in "usr/share/gazebo-7/worlds" -->
-    <arg name="gui" value="false"/>
+    <arg name="world_name" value="$(arg world_file)"/>
+    <arg name="gui" value="$(arg gui_state)"/>
     <arg name="headless" value="false"/> <!-- Inert - see gazebo_ros_pkgs issue #491 -->
   </include>
 </launch>
