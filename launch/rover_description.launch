@@ -1,6 +1,7 @@
 <launch>
   <arg name="world_file" default="worlds/cude.world"/>
   <arg name="gui_state" default="true"/>
+  <arg name="enable_manual_cmd_vel" default="true"/>
 
   <master auto="start"/>
   <!-- IMPORTANT: When no model is appearing run "killall gzserver" http://answers.gazebosim.org/question/9170/error-while-loading-gazebo/ -->
@@ -19,9 +20,11 @@
 
   <node name="controller_spawner" pkg="controller_manager" type="spawner" args="joint_state_controller  --shutdown-timeout 3"/>
 
-  <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
-    <param name="default_topic" value="/cmd_vel"/>
-  </node>
+  <group if="$(eval enable_manual_cmd_vel)">
+    <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+      <param name="default_topic" value="/cmd_vel"/>
+    </node>
+  </group>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(arg world_file)"/>
