@@ -6,8 +6,8 @@
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
   <arg name="verbose" default="false"/>
-  <arg name="world_name" default="$(find ouster_description)/worlds/example.world"/>
-  <arg name="model" default="$(find ouster_description)/urdf/example.urdf.xacro"/>
+  <arg name="world_name" default="$(find rover_description)/worlds/example.world"/>
+  <arg name="model" default="$(find rover_description)/urdf/rover.urdf.xacro"/>
 
   <!-- Start gazebo and load the world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch" >
@@ -28,8 +28,8 @@
   </node>
 
   <!-- RViz -->
-  <arg name="rviz" default="true"/>
-  <node if="$(arg rviz)" pkg="rviz" type="rviz" name="$(anon rviz)" respawn="false" output="screen" args="-d $(find ouster_description)/rviz/example.rviz" />
+  <arg name="rviz" default="false"/>
+  <node if="$(arg rviz)" pkg="rviz" type="rviz" name="$(anon rviz)" respawn="false" output="screen" args="-d $(find rover_description)/rviz/example.rviz" />
  
 
 </launch>
