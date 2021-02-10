@@ -1,5 +1,5 @@
 <launch>
-  <arg name="world_file" default="$(find rover_description)/worlds/os-1-64.world"/>
+  <arg name="world_file" default="$(find rover_description)/worlds/marsyard.world"/>
   <arg name="gui_state" default="true"/>
   <arg name="enable_manual_cmd_vel" default="true"/>
 
@@ -13,7 +13,7 @@
   <param name="robot_description" command="$(find xacro)/xacro.py --inorder '$(find rover_description)/urdf/rover.urdf.xacro'"/>
 
   <!-- push robot_description to factory and spawn robot in gazebo -->
-  <node name="rover_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model rover"/>
+  <node name="rover_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -z 2 -param robot_description -model rover"/>
   
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
     <param name="publish_frequency" type="double" value="30.0"/>
